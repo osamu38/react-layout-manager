@@ -5,7 +5,11 @@
   "homepage": "http://osamu38.github.io/react-layout-manager",
   "license": "MIT",
   "author": "osamu38",
-  "main": "lib/ReactLayoutManager",
+  "main": "build/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/osamu38/react-layout-manager.git"
+  },
   "scripts": {
     "build": "react-scripts build",
     "deploy": "npm run build && gh-pages -d build",
