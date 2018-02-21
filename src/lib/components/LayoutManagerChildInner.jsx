@@ -6,9 +6,8 @@ import {
 } from '../helpers/setStyles';
 
 const LayoutManagerChildInner = styled.div`
-  width: 100%;
-  ${({ innerWidth }) => setInnerWidth(innerWidth)}
   ${({ align }) => setAlign(align)}
+  ${({ innerWidth }) => setInnerWidth(innerWidth)}
   ${(props) => setResponsivePropertyToChildInner(props)}
 `;
 

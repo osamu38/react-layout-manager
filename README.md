@@ -285,6 +285,7 @@ const CardNumberBlock = () => (
 );
 const Main = () => (
   <RLM
+    width="100%"
     verticalSpace={10}
     innerWidth={500}
     align="center"

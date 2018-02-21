@@ -10,19 +10,17 @@ import {
 } from '../helpers/setStyles';
 
 const LayoutManagerChild = styled.div`
-  width: 100%;
-  vertical-align: middle;
   &::after {
     display: block;
     clear: both;
     content: '';
   }
+  ${({ isVisible }) => setVisible(isVisible)}
   ${({ horizontalSpace }) => setRightMargin(horizontalSpace)}
   ${({ wrapVerticalSpace }) => setBottomMargin(wrapVerticalSpace)}
   ${({ verticalSpace }) => setVerticalSpace(verticalSpace)}
   ${({ childWidth }) => setWidth(childWidth)}
   ${({ verticalAlign }) => setVerticalAlign(verticalAlign)}
-  ${({ isVisible }) => setVisible(isVisible)}
   ${(props) => setResponsivePropertyToChild(props)}
 `;
 

@@ -54,6 +54,7 @@ export function setBottomNegativeMargin(wrapVerticalSpace) {
 export function setWidth(childWidth) {
   return childWidth && `
     max-width: ${childWidth + getUnit(childWidth)};
+    width: 100%;
   `;
 }
 export function setVerticalSpace(verticalSpace) {
@@ -62,20 +63,32 @@ export function setVerticalSpace(verticalSpace) {
   `;
 }
 export function setVerticalAlign(verticalAlign) {
-  return checkApplyProperyValid(verticalAlign) && `
+  return checkApplyProperyValid(verticalAlign) ? `
     vertical-align: ${verticalAlign + getUnit(verticalAlign)};
+  ` : `
+    vertical-align: middle;
   `;
 }
 export function setInnerWidth(innerWidth) {
   return checkApplyProperyValid(innerWidth) && `
     max-width: ${innerWidth + getUnit(innerWidth)};
+    width: 100%;
   `;
 }
 export function setAlign(align) {
-  return align && align === 'center' ? `
-    margin: 0 auto;
-  ` : `
+  if (!align) {
+    return `
+      width: 100%;
+    `;
+  } else if (align === 'center') {
+    return `
+      margin: 0 auto;
+      width: fit-content;
+    `;
+  }
+  return `
     float: ${align};
+    width: auto;
   `;
 }
 export function setResponsivePropertyToLayoutManager(props) {
@@ -117,12 +130,12 @@ export function setResponsivePropertyToChild(props) {
         );
 
         return css`
+          ${setVisible(childProperty.isVisible)}
           ${setRightMargin(childProperty.horizontalSpace)}
           ${setBottomMargin(childProperty.wrapVerticalSpace)}
           ${setVerticalSpace(childProperty.verticalSpace)}
           ${setWidth(childProperty.childWidth)}
           ${setVerticalAlign(childProperty.verticalAlign)}
-          ${setVisible(childProperty.isVisible)}
         `;
       })()}
     }
@@ -142,8 +155,8 @@ export function setResponsivePropertyToChildInner(props) {
         );
 
         return css`
-          ${setInnerWidth(childInnerProperty.innerWidth)}
           ${setAlign(childInnerProperty.align)}
+          ${setInnerWidth(childInnerProperty.innerWidth)}
         `;
       })()}
     }
