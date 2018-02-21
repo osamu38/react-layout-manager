@@ -73,37 +73,29 @@ export default class ReactLayoutManager extends Component {
                 )}
                 key={i}
               >
-                {parseInnerWidth ? (
-                  <LayoutManagerChildInner
-                    {...getLayoutManagerChildInnerProperty(
-                      parseInnerWidth,
-                      align,
-                      i,
-                      responsive,
-                    )}
-                    key={i}
-                  >
-                    {child}
-                  </LayoutManagerChildInner>
-                ) :
-                  child
-                }
+                <LayoutManagerChildInner
+                  {...getLayoutManagerChildInnerProperty(
+                    parseInnerWidth,
+                    align,
+                    i,
+                    responsive,
+                  )}
+                  key={i}
+                >
+                  {child}
+                </LayoutManagerChildInner>
               </LayoutManagerChild>
             );
           }) :
           <LayoutManagerChild
             childWidth={parseWidth}
           >
-            {parseInnerWidth ? (
-              <LayoutManagerChildInner
-                innerWidth={parseInnerWidth}
-                align={align}
-              >
-                {children}
-              </LayoutManagerChildInner>
-            ) :
-              children
-            }
+            <LayoutManagerChildInner
+              innerWidth={parseInnerWidth}
+              align={align}
+            >
+              {children}
+            </LayoutManagerChildInner>
           </LayoutManagerChild>
         }
       </LayoutManager>
