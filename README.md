@@ -6,7 +6,7 @@ Layout manager not to give margins to components
 
 * [Installation](#installation)
 * [Usage](#usage)
-* [Styles](#styles)
+* [Props](#props)
 * [Examples](#examples)
 * [Demos](#demos)
 
@@ -51,33 +51,24 @@ const EmailBlock = () => (
 );
 ```
 
-## Styles
+## Props
 
+Props|Type|Default Value|Description
+---|---|---|---
+`horizontalSpace`|`string \| number \| Array<string \| number>`|`0`|Horizontal space of element and element
+`verticalSpace`|`string \| number \| Array<string \| number>`|`0`|Vertical space of element and element
+`wrapVerticalSpace`|`string \| number \| Array<string \| number>`|`0`|Vertical space of element and element when wrap
+`width`|`string \| number \| Array<string \| number>`|`null`|Width of elements 
+`innerWidth`|`string \| number \| Array<string \| number>`|`null`|Width in element
+`verticalAlign`|`string \| number \| Array<string \| number>`|`null`|Vertical align
+`align`|`string \| Array<string>`|`null`|`'left' | 'center' | 'right'`
+`visible`|`boolean \| Array<boolean>`|`true`|Whether the elements are displayed or not
+`wrap`|`boolean`|`false`|Whether to wrap or not
 
-```jsx
-<RLM
-  horizontalSpace={10}
-  verticalSpace={10}
-  wrapVerticalSpace={10}
-  width={100}
-  innerWidth={50}
-  verticalAlign="middle"
-  align="center"
-  visible
-  wrap
-  responsive={[
-    {
-      breakpoint: 480,
-      settings: {
-        width: [100, '100%'],
-        verticalSpace: 50,
-        horizontalSpace: 0,
-        wrapVerticalSpace: 5,
-      },
-    }
-  ]}
->
-```
+### `responsive` property
+
+Array of objects in the form of `{ breakpoint: int, settings: { ... } }` The breakpoint _number_ is the `maxWidth` so the settings will be applied when resolution is below this value.
+Example: `[ { breakpoint: 1024, settings: { wrap: true, width: ['20%', 100, '80%'] } }, { breakpoint: 768, settings: { visible: false } }]`
 
 ## Examples
 
