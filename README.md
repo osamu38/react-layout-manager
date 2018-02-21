@@ -61,7 +61,7 @@ Props|Type|Default Value|Description
 `width`|`string \| number \| Array<string \| number>`|`null`|Width of elements 
 `innerWidth`|`string \| number \| Array<string \| number>`|`null`|Width in element
 `verticalAlign`|`string \| number \| Array<string \| number>`|`null`|Vertical align
-`align`|`string \| Array<string>`|`null`|`'left' | 'center' | 'right'`
+`align`|`s'left' \| 'center' \| 'right' \| Array<'left' \| 'center' \| 'right'>`|`null`|Align inner element
 `visible`|`boolean \| Array<boolean>`|`true`|Whether the elements are displayed or not
 `wrap`|`boolean`|`false`|Whether to wrap or not
 
