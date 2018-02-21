@@ -7,6 +7,26 @@ import { getUnit } from './util';
 function getProperty(property, index) {
   return isArray(property) ? property[index] : property;
 }
+function getHorizontalSpace(horizontalSpace, childWidth, isLastChild, index) {
+  const horizontalSpaceValue = getProperty(horizontalSpace, index);
+
+  if (
+    !horizontalSpaceValue ||
+    String(childWidth).includes('100%') ||
+    isLastChild
+  ) {
+    return 0;
+  }
+  return horizontalSpaceValue;
+}
+function getVerticalSpace(verticalSpace, index) {
+  if (
+    verticalSpace &&
+    index
+  ) {
+    return getProperty(verticalSpace, index - 1);
+  }
+}
 function getTotalFixedWidth(fixedWidth) {
   return fixedWidth.reduce((pre, cur) => pre + cur, 0);
 }
@@ -16,10 +36,10 @@ function getTotalHorizontalSpaces(horizontalSpace, childrenLength) {
   }
   return horizontalSpace * (childrenLength - 1);
 }
-function getChildWidth(width, horizontalSpace, isWrap, childrenLength, index) {
+function getChildWidth(width, horizontalSpace, wrap, childrenLength, index) {
   const totalHorizontalSpaces = getTotalHorizontalSpaces(horizontalSpace, childrenLength);
 
-  if (isWrap) {
+  if (wrap) {
     return getProperty(width, index);
   }
   if (isArray(width)) {
@@ -61,21 +81,23 @@ export function getLayoutManagerChildProperty(
   verticalSpace,
   wrapVerticalSpace,
   verticalAlign,
-  isVisible,
-  isWrap,
+  visible,
+  wrap,
   childrenLength,
   isLastChild,
   index,
   responsive,
 ) {
+  const childWidth = getChildWidth(width, horizontalSpace, wrap, childrenLength, index);
+
   return {
-    childWidth: getChildWidth(width, horizontalSpace, isWrap, childrenLength, index),
+    childWidth,
     verticalAlign: getProperty(verticalAlign, index),
-    horizontalSpace: isLastChild ? 0 : getProperty(horizontalSpace, index) || 0,
-    verticalSpace: verticalSpace && index && getProperty(verticalSpace, index - 1),
+    horizontalSpace: getHorizontalSpace(horizontalSpace, childWidth, isLastChild, index),
+    verticalSpace: getVerticalSpace(verticalSpace, index),
     wrapVerticalSpace,
-    isWrap,
-    isVisible: getProperty(isVisible, index),
+    isWrap: wrap,
+    isVisible: getProperty(visible, index),
     responsive,
     // pass props to styled components
     defaults: {
@@ -84,8 +106,8 @@ export function getLayoutManagerChildProperty(
       horizontalSpace,
       verticalSpace,
       wrapVerticalSpace,
-      isWrap,
-      isVisible,
+      wrap,
+      visible,
     },
     childrenLength,
     isLastChild,

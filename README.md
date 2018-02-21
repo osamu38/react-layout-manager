@@ -14,7 +14,7 @@ Layout manager not to give margins to components
 
 To install, you can use [npm](https://npmjs.org/) or [yarn](https://yarnpkg.com):
 
-    $ npm install react-layout-manager
+    $ npm install -S react-layout-manager
     $ yarn add react-layout-manager
 
 ## Usage
@@ -22,7 +22,7 @@ To install, you can use [npm](https://npmjs.org/) or [yarn](https://yarnpkg.com)
 Example:
 
 ```jsx
-import RLM from 'ReactLayoutManager';
+import RLM from 'react-layout-manager';
 
 <RLM
   width={[100, '100%']}
@@ -31,9 +31,7 @@ import RLM from 'ReactLayoutManager';
     {
       breakpoint: 480,
       settings: {
-        width: [100, '100%'],
-        isWrap: true,
-        horizontalSpace: 0,
+        wrap: true,
         wrapVerticalSpace: 5,
       },
     },
@@ -63,8 +61,8 @@ import RLM from 'ReactLayoutManager';
   innerWidth={50}
   verticalAlign="middle"
   align="center"
-  isVisible
-  isWrap
+  visible
+  wrap
   responsive={[
     {
       breakpoint: 480,
@@ -81,10 +79,12 @@ import RLM from 'ReactLayoutManager';
 
 ## Examples
 
+Demo Source:
+
 ```jsx
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import RLM from './components/ReactLayoutManager';
+import RLM from 'react-layout-manager';
 
 const Input = styled.input`
   width: 100%;
@@ -109,20 +109,6 @@ const Label = styled.div`
   font-size: 12px;
   font-weight: bold;
 `;
-const Main = () => (
-  <RLM
-    verticalSpace={10}
-    innerWidth={500}
-    align="center"
-  >
-    <EmailBlock />
-    <TelBlock />
-    <PasswordBlock />
-    <BirthdayBlock />
-    <PostalCodeBlock />
-    <CardNumberBlock />
-  </RLM>
-);
 const EmailBlock = () => (
   <RLM
     width={[100, '100%']}
@@ -131,9 +117,7 @@ const EmailBlock = () => (
       {
         breakpoint: 480,
         settings: {
-          width: [100, '100%'],
-          isWrap: true,
-          horizontalSpace: 0,
+          wrap: true,
           wrapVerticalSpace: 5,
         },
       },
@@ -150,6 +134,25 @@ const EmailBlock = () => (
     </RLM>
   </RLM>
 );
+const TelBlock = () => (
+  <RLM
+    width={[100, 160]}
+    horizontalSpace={5}
+    responsive={[
+      {
+        breakpoint: 480,
+        settings: {
+          width: '100%',
+          wrap: true,
+          wrapVerticalSpace: 5,
+        },
+      },
+    ]}
+  >
+    <Label>Tel</Label>
+    <Input placeholder="090XXXXXXXX" />
+  </RLM>
+);
 const PasswordBlock = () => (
   <RLM
     width={[100, 240]}
@@ -158,8 +161,8 @@ const PasswordBlock = () => (
       {
         breakpoint: 480,
         settings: {
-          width: [100, '100%'],
-          isWrap: true,
+          width: '100%',
+          wrap: true,
           wrapVerticalSpace: 5,
         },
       },
@@ -177,7 +180,7 @@ const BirthdayBlock = () => (
       {
         breakpoint: 480,
         settings: {
-          isWrap: true,
+          wrap: true,
           wrapVerticalSpace: 5,
         },
       },
@@ -204,26 +207,6 @@ const BirthdayBlock = () => (
     </RLM>
   </RLM>
 );
-const TelBlock = () => (
-  <RLM
-    width={[100, 160]}
-    horizontalSpace={5}
-    responsive={[
-      {
-        breakpoint: 480,
-        settings: {
-          width: [100, '100%'],
-          isWrap: true,
-          horizontalSpace: 0,
-          wrapVerticalSpace: 5,
-        },
-      },
-    ]}
-  >
-    <Label>Tel</Label>
-    <Input placeholder="090XXXXXXXX" />
-  </RLM>
-);
 const PostalCodeBlock = () => (
   <RLM
     width={[100, '100%']}
@@ -232,7 +215,7 @@ const PostalCodeBlock = () => (
       {
         breakpoint: 480,
         settings: {
-          isWrap: true,
+          wrap: true,
           wrapVerticalSpace: 5,
         },
       },
@@ -265,7 +248,7 @@ const CardNumberBlock = () => (
       {
         breakpoint: 480,
         settings: {
-          isWrap: true,
+          wrap: true,
           wrapVerticalSpace: 5,
         },
       },
@@ -280,10 +263,9 @@ const CardNumberBlock = () => (
         {
           breakpoint: 480,
           settings: {
-            width: ['100%', 10, '100%'],
-            horizontalSpace: 0,
-            isWrap: true,
-            isVisible: [true, false, true],
+            width: ['100%', null, '100%'],
+            wrap: true,
+            visible: [true, false, true],
           },
         },
       ]}
@@ -306,6 +288,20 @@ const CardNumberBlock = () => (
         <Input placeholder="XXXX" />
       </RLM>
     </RLM>
+  </RLM>
+);
+const Main = () => (
+  <RLM
+    verticalSpace={10}
+    innerWidth={500}
+    align="center"
+  >
+    <EmailBlock />
+    <TelBlock />
+    <PasswordBlock />
+    <BirthdayBlock />
+    <PostalCodeBlock />
+    <CardNumberBlock />
   </RLM>
 );
 

@@ -47,9 +47,7 @@ const EmailBlock = () => (
       {
         breakpoint: 480,
         settings: {
-          width: [100, '100%'],
-          isWrap: true,
-          horizontalSpace: 0,
+          wrap: true,
           wrapVerticalSpace: 5,
         },
       },
@@ -66,6 +64,25 @@ const EmailBlock = () => (
     </RLM>
   </RLM>
 );
+const TelBlock = () => (
+  <RLM
+    width={[100, 160]}
+    horizontalSpace={5}
+    responsive={[
+      {
+        breakpoint: 480,
+        settings: {
+          width: '100%',
+          wrap: true,
+          wrapVerticalSpace: 5,
+        },
+      },
+    ]}
+  >
+    <Label>Tel</Label>
+    <Input placeholder="090XXXXXXXX" />
+  </RLM>
+);
 const PasswordBlock = () => (
   <RLM
     width={[100, 240]}
@@ -74,8 +91,8 @@ const PasswordBlock = () => (
       {
         breakpoint: 480,
         settings: {
-          width: [100, '100%'],
-          isWrap: true,
+          width: '100%',
+          wrap: true,
           wrapVerticalSpace: 5,
         },
       },
@@ -93,7 +110,7 @@ const BirthdayBlock = () => (
       {
         breakpoint: 480,
         settings: {
-          isWrap: true,
+          wrap: true,
           wrapVerticalSpace: 5,
         },
       },
@@ -120,26 +137,6 @@ const BirthdayBlock = () => (
     </RLM>
   </RLM>
 );
-const TelBlock = () => (
-  <RLM
-    width={[100, 160]}
-    horizontalSpace={5}
-    responsive={[
-      {
-        breakpoint: 480,
-        settings: {
-          width: [100, '100%'],
-          isWrap: true,
-          horizontalSpace: 0,
-          wrapVerticalSpace: 5,
-        },
-      },
-    ]}
-  >
-    <Label>Tel</Label>
-    <Input placeholder="090XXXXXXXX" />
-  </RLM>
-);
 const PostalCodeBlock = () => (
   <RLM
     width={[100, '100%']}
@@ -148,7 +145,7 @@ const PostalCodeBlock = () => (
       {
         breakpoint: 480,
         settings: {
-          isWrap: true,
+          wrap: true,
           wrapVerticalSpace: 5,
         },
       },
@@ -181,7 +178,7 @@ const CardNumberBlock = () => (
       {
         breakpoint: 480,
         settings: {
-          isWrap: true,
+          wrap: true,
           wrapVerticalSpace: 5,
         },
       },
@@ -196,10 +193,9 @@ const CardNumberBlock = () => (
         {
           breakpoint: 480,
           settings: {
-            width: ['100%', 10, '100%'],
-            horizontalSpace: 0,
-            isWrap: true,
-            isVisible: [true, false, true],
+            width: ['100%', null, '100%'],
+            wrap: true,
+            visible: [true, false, true],
           },
         },
       ]}

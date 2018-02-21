@@ -12,15 +12,17 @@ import LayoutManagerChildInner from './LayoutManagerChildInner';
 
 export default class ReactLayoutManager extends Component {
   static defaultProps = {
-    horizontalSpace: 0,
-    wrapVerticalSpace: 0,
-    align: null,
     children: null,
-    width: 0,
-    innerWidth: 0,
+    horizontalSpace: 0,
+    verticalSpace: 0,
+    wrapVerticalSpace: 0,
+    width: null,
+    innerWidth: null,
     verticalAlign: null,
-    isVisible: true,
-    isWrap: false,
+    align: null,
+    visible: true,
+    wrap: false,
+    responsive: [],
   }
   render() {
     const {
@@ -31,10 +33,10 @@ export default class ReactLayoutManager extends Component {
       width,
       innerWidth,
       verticalAlign,
-      responsive,
       align,
-      isVisible,
-      isWrap,
+      visible,
+      wrap,
+      responsive,
     } = this.props;
     const parseWidth = parsePropertyToNumber(width);
     const parseHorizontalSpace = parsePropertyToNumber(horizontalSpace);
@@ -62,8 +64,8 @@ export default class ReactLayoutManager extends Component {
                   parseVerticalSpace,
                   wrapVerticalSpace,
                   parseVerticalAlign,
-                  isVisible,
-                  isWrap,
+                  visible,
+                  wrap,
                   childrenLength,
                   isLastChild,
                   i,
