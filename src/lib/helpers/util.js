@@ -2,7 +2,7 @@ import {
   isNumber,
   isString,
   isArray,
-} from '../helpers/type';
+} from './type';
 
 export function getUnit(property) {
   return isNumber(property) ? 'px' : '';

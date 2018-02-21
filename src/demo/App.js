@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import RLM from './components/ReactLayoutManager';
+import RLM from '../lib';
 
 const Input = styled.input`
   width: 100%;

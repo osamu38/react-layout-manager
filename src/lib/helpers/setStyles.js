@@ -4,7 +4,7 @@ import {
   isString,
   isBoolean,
   isArray,
-} from '../helpers/type';
+} from './type';
 import { getUnit } from './util';
 import {
   getLayoutManagerProperty,
