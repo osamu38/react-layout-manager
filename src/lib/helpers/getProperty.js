@@ -12,7 +12,7 @@ function getHorizontalSpace(horizontalSpace, childWidth, isLastChild, index) {
 
   if (
     !horizontalSpaceValue ||
-    String(childWidth).includes('100%') ||
+    String(childWidth) === '100%' ||
     isLastChild
   ) {
     return 0;
