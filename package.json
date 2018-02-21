@@ -1,6 +1,6 @@
 {
   "name": "react-layout-manager",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Layout manager not to give margins to components",
   "homepage": "http://osamu38.github.io/react-layout-manager",
   "bugs": {

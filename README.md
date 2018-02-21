@@ -24,29 +24,31 @@ Example:
 ```jsx
 import RLM from 'react-layout-manager';
 
-<RLM
-  width={[100, '100%']}
-  horizontalSpace={5}
-  responsive={[
-    {
-      breakpoint: 480,
-      settings: {
-        wrap: true,
-        wrapVerticalSpace: 5,
-      },
-    },
-  ]}
->
-  <Label>Email</Label>
+const EmailBlock = () => (
   <RLM
-    width={['65%', 16, '35%']}
+    width={[100, '100%']}
     horizontalSpace={5}
+    responsive={[
+      {
+        breakpoint: 480,
+        settings: {
+          wrap: true,
+          wrapVerticalSpace: 5,
+        },
+      },
+    ]}
   >
-    <Input placeholder="react-layout-manager" />
-    <Unit>@</Unit>
-    <Input placeholder="gmail.com" />
+    <Label>Email</Label>
+    <RLM
+      width={['65%', 16, '35%']}
+      horizontalSpace={5}
+    >
+      <Input placeholder="react-layout-manager" />
+      <Unit>@</Unit>
+      <Input placeholder="gmail.com" />
+    </RLM>
   </RLM>
-</RLM>
+);
 ```
 
 ## Styles

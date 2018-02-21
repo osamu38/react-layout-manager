@@ -25,20 +25,6 @@ const Label = styled.div`
   font-size: 12px;
   font-weight: bold;
 `;
-const Main = () => (
-  <RLM
-    verticalSpace={10}
-    innerWidth={500}
-    align="center"
-  >
-    <EmailBlock />
-    <TelBlock />
-    <PasswordBlock />
-    <BirthdayBlock />
-    <PostalCodeBlock />
-    <CardNumberBlock />
-  </RLM>
-);
 const EmailBlock = () => (
   <RLM
     width={[100, '100%']}
@@ -218,6 +204,20 @@ const CardNumberBlock = () => (
         <Input placeholder="XXXX" />
       </RLM>
     </RLM>
+  </RLM>
+);
+const Main = () => (
+  <RLM
+    verticalSpace={10}
+    innerWidth={500}
+    align="center"
+  >
+    <EmailBlock />
+    <TelBlock />
+    <PasswordBlock />
+    <BirthdayBlock />
+    <PostalCodeBlock />
+    <CardNumberBlock />
   </RLM>
 );
 
