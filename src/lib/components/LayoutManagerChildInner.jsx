@@ -8,7 +8,7 @@ import {
 const LayoutManagerChildInner = styled.div`
   ${({ align }) => setAlign(align)}
   ${({ innerWidth }) => setInnerWidth(innerWidth)}
-  ${(props) => setResponsivePropertyToChildInner(props)}
+  ${props => setResponsivePropertyToChildInner(props)}
 `;
 
 export default LayoutManagerChildInner;

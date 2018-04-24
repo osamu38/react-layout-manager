@@ -1,7 +1,4 @@
-import {
-  isNumber,
-  isArray,
-} from './type';
+import { isNumber, isArray } from './type';
 import { getUnit } from './util';
 
 function getProperty(property, index) {
@@ -10,20 +7,13 @@ function getProperty(property, index) {
 function getHorizontalSpace(horizontalSpace, childWidth, isLastChild, index) {
   const horizontalSpaceValue = getProperty(horizontalSpace, index);
 
-  if (
-    !horizontalSpaceValue ||
-    String(childWidth) === '100%' ||
-    isLastChild
-  ) {
+  if (!horizontalSpaceValue || String(childWidth) === '100%' || isLastChild) {
     return 0;
   }
   return horizontalSpaceValue;
 }
 function getVerticalSpace(verticalSpace, index) {
-  if (
-    verticalSpace &&
-    index
-  ) {
+  if (verticalSpace && index) {
     return getProperty(verticalSpace, index - 1);
   }
 }
@@ -37,7 +27,10 @@ function getTotalHorizontalSpaces(horizontalSpace, childrenLength) {
   return horizontalSpace * (childrenLength - 1);
 }
 function getChildWidth(width, horizontalSpace, wrap, childrenLength, index) {
-  const totalHorizontalSpaces = getTotalHorizontalSpaces(horizontalSpace, childrenLength);
+  const totalHorizontalSpaces = getTotalHorizontalSpaces(
+    horizontalSpace,
+    childrenLength
+  );
 
   if (wrap) {
     return getProperty(width, index);
@@ -51,16 +44,20 @@ function getChildWidth(width, horizontalSpace, wrap, childrenLength, index) {
       if (fixedWidth.length) {
         const totalFixedWidth = getTotalFixedWidth(fixedWidth);
 
-        return `calc(${width[index]} - ${(totalHorizontalSpaces + totalFixedWidth) / variableWidth.length}px)`;
+        return `calc(${width[index]} - ${(totalHorizontalSpaces +
+          totalFixedWidth) /
+          variableWidth.length}px)`;
       }
-      return `calc(${width[index]} - ${totalHorizontalSpaces / childrenLength}px)`;
+      return `calc(${width[index]} - ${totalHorizontalSpaces /
+        childrenLength}px)`;
     }
     return width[index];
   }
   const isVariableWidth = `${width}`.includes('%');
 
   if (isVariableWidth) {
-    return `calc(${width + getUnit(width)} - ${totalHorizontalSpaces / childrenLength}px)`;
+    return `calc(${width + getUnit(width)} - ${totalHorizontalSpaces /
+      childrenLength}px)`;
   }
   return getProperty(width, index);
 }
@@ -86,14 +83,25 @@ export function getLayoutManagerChildProperty(
   childrenLength,
   isLastChild,
   index,
-  responsive,
+  responsive
 ) {
-  const childWidth = getChildWidth(width, horizontalSpace, wrap, childrenLength, index);
+  const childWidth = getChildWidth(
+    width,
+    horizontalSpace,
+    wrap,
+    childrenLength,
+    index
+  );
 
   return {
     childWidth,
     verticalAlign: getProperty(verticalAlign, index),
-    horizontalSpace: getHorizontalSpace(horizontalSpace, childWidth, isLastChild, index),
+    horizontalSpace: getHorizontalSpace(
+      horizontalSpace,
+      childWidth,
+      isLastChild,
+      index
+    ),
     verticalSpace: getVerticalSpace(verticalSpace, index),
     wrapVerticalSpace,
     isWrap: wrap,
@@ -114,7 +122,12 @@ export function getLayoutManagerChildProperty(
     index,
   };
 }
-export function getLayoutManagerChildInnerProperty(innerWidth, align, index, responsive) {
+export function getLayoutManagerChildInnerProperty(
+  innerWidth,
+  align,
+  index,
+  responsive
+) {
   return {
     innerWidth: getProperty(innerWidth, index),
     align: getProperty(align, index),

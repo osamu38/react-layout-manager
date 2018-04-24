@@ -1,6 +1,10 @@
-
 function typeOf(x) {
-  return x !== x ? 'NaN' : Object.prototype.toString.call(x).slice(8, -1).toLowerCase(); // eslint-disable-line no-self-compare
+  return x !== x
+    ? 'NaN'
+    : Object.prototype.toString
+        .call(x)
+        .slice(8, -1)
+        .toLowerCase(); // eslint-disable-line no-self-compare
 }
 
 export function isNumber(property) {

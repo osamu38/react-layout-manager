@@ -23,7 +23,7 @@ export default class ReactLayoutManager extends Component {
     visible: true,
     wrap: false,
     responsive: [],
-  }
+  };
   render() {
     const {
       children,
@@ -46,15 +46,12 @@ export default class ReactLayoutManager extends Component {
 
     return (
       <LayoutManager
-        {...getLayoutManagerProperty(
-          wrapVerticalSpace,
-          responsive,
-        )}
+        {...getLayoutManagerProperty(wrapVerticalSpace, responsive)}
       >
-        {isArray(children) ?
+        {isArray(children) ? (
           children.map((child, i) => {
             const childrenLength = children.length;
-            const isLastChild = (childrenLength - 1) === i;
+            const isLastChild = childrenLength - 1 === i;
 
             return (
               <LayoutManagerChild
@@ -69,7 +66,7 @@ export default class ReactLayoutManager extends Component {
                   childrenLength,
                   isLastChild,
                   i,
-                  responsive,
+                  responsive
                 )}
                 key={i}
               >
@@ -78,7 +75,7 @@ export default class ReactLayoutManager extends Component {
                     parseInnerWidth,
                     align,
                     i,
-                    responsive,
+                    responsive
                   )}
                   key={i}
                 >
@@ -86,19 +83,15 @@ export default class ReactLayoutManager extends Component {
                 </LayoutManagerChildInner>
               </LayoutManagerChild>
             );
-          }) :
-          <LayoutManagerChild
-            childWidth={parseWidth}
-          >
-            <LayoutManagerChildInner
-              innerWidth={parseInnerWidth}
-              align={align}
-            >
+          })
+        ) : (
+          <LayoutManagerChild childWidth={parseWidth}>
+            <LayoutManagerChildInner innerWidth={parseInnerWidth} align={align}>
               {children}
             </LayoutManagerChildInner>
           </LayoutManagerChild>
-        }
+        )}
       </LayoutManager>
     );
   }
-};
+}

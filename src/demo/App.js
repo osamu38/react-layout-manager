@@ -97,7 +97,7 @@ function Password() {
   return (
     <RLM {...PasswordStyle}>
       <Label>Password</Label>
-      <Input placeholder="rEaCtLaYoUtMaNaGeR"/>
+      <Input placeholder="rEaCtLaYoUtMaNaGeR" />
     </RLM>
   );
 }
@@ -162,7 +162,7 @@ function PostalCode() {
       {
         breakpoint: 480,
         settings: {
-          width: ['50%', 16, '50%']
+          width: ['50%', 16, '50%'],
         },
       },
     ],
@@ -254,9 +254,7 @@ function Main() {
 
 class App extends Component {
   render() {
-    return (
-      <Main />
-    );
+    return <Main />;
   }
 }
 

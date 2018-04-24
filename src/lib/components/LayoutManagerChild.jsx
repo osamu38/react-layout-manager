@@ -21,7 +21,7 @@ const LayoutManagerChild = styled.div`
   ${({ verticalSpace }) => setVerticalSpace(verticalSpace)}
   ${({ childWidth }) => setWidth(childWidth)}
   ${({ verticalAlign }) => setVerticalAlign(verticalAlign)}
-  ${(props) => setResponsivePropertyToChild(props)}
+  ${props => setResponsivePropertyToChild(props)}
 `;
 
 export default LayoutManagerChild;

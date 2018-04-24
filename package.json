@@ -1,6 +1,6 @@
 {
   "name": "react-layout-manager",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "description": "Layout manager not to give margins to components",
   "homepage": "http://osamu38.github.io/react-layout-manager",
   "bugs": {
@@ -21,9 +21,7 @@
     "test": "node scripts/test.js --env=jsdom"
   },
   "babel": {
-    "presets": [
-      "react-app"
-    ]
+    "presets": ["react-app"]
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -75,16 +73,12 @@
     "whatwg-fetch": "2.0.3"
   },
   "peerDependencies": {
-    "react": "^15.3.0 || ^17.0.0",
-    "styled-components": "^3.1.6"
+    "react": "^0.14.0 || ^15.0.0 || ^16.0.0",
+    "styled-components": "^3.0.0"
   },
   "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx,mjs}"
-    ],
-    "setupFiles": [
-      "<rootDir>/config/polyfills.js"
-    ],
+    "collectCoverageFrom": ["src/**/*.{js,jsx,mjs}"],
+    "setupFiles": ["<rootDir>/config/polyfills.js"],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
       "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}"
@@ -94,11 +88,10 @@
     "transform": {
       "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
       "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-      "^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+      "^(?!.*\\.(js|jsx|mjs|css|json)$)":
+        "<rootDir>/config/jest/fileTransform.js"
     },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
-    ],
+    "transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"],
     "moduleNameMapper": {
       "^react-native$": "react-native-web"
     },
